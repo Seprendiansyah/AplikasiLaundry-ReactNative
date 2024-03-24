@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import useHTTP from "../../hooks/useHTTP";
 import useJWT from "../../hooks/useJWT";
 import { ScrollView, Text, View, RefreshControl } from "react-native";
-import { List } from "react-native-paper"
+import { List, Searchbar } from "react-native-paper"
 import useMessage from "../../hooks/useMessage";
 import { BASE_URL } from "../../settings";
 import { Appbar } from 'react-native-paper';
@@ -64,6 +64,16 @@ const ScreenKasList = ({navigation}) => {
                 }} />
               )}
             />
+            <Searchbar
+            placeholder="Search"
+            style={{marginHorizontal: 16, marginVertical: 16}}
+            onChangeText={(text) => {
+              const debounce = setTimeout(() => {
+                onKasList({search: text})
+                clearTimeout(debounce)
+              }, 1000)
+            }}
+            />
             <WidgetCommonAuth child={(
               <ScrollView
                 style={{width: "100%"}}
@@ -76,7 +86,7 @@ const ScreenKasList = ({navigation}) => {
                   <List.Item
                     onPress={() => navigation.navigate("ScreenKasDetail", {id: kas._id})}
                     key={kas.id}
-                    title={kas.keterangan}
+                    title={kas.nomorTransaksi}
                     left={props => <List.Icon {...props} icon="folder-outline" />}
                     // right={props => (
                     //   <WidgetCommonStatus status={kas.tanggal} />

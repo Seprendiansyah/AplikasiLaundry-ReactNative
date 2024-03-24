@@ -19,6 +19,8 @@ import ScreenTerimaList from './screens/terima/ScreenTerimaList';
 import ScreenKasList from './screens/kas/ScreenKasList';
 import ScreenKasCreate from './screens/kas/ScreenKasCreate';
 import ScreenKasDetail from './screens/kas/ScreenKasDetail';
+import ScreenTerimaCreate from './screens/terima/ScreenTerimaCreate';
+import ScreenTerimaDetail from './screens/terima/ScreenTerimaDetail';
 
 
 
@@ -56,6 +58,16 @@ const App = () => {
           <Stack.Screen 
             name='ScreenTerimaList'
             component={ScreenTerimaList}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen 
+            name='ScreenTerimaCreate'
+            component={ScreenTerimaCreate}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen 
+            name='ScreenTerimaDetail'
+            component={ScreenTerimaDetail}
             options={{ headerShown: false }}
           />
           <Stack.Screen 
